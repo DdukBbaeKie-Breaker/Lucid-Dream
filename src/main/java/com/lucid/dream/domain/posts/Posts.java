@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -20,15 +21,17 @@ public class Posts extends BaseTimeEntity{
     private Long id;
 
     @Column(length = 500, nullable = false)
+    @NotEmpty
     private String title;
 
     @Column(columnDefinition = "TEXT", nullable = false)
+    @NotEmpty
     private String content;
 
     private String author;
 
     @Builder
-    public Posts(String title, String content, String author) {
+    public Posts(String title, String content, String author, String img) {
         this.title = title;
         this.content = content;
         this.author = author;
