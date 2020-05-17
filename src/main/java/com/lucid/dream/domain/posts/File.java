@@ -14,7 +14,7 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class Imgs {
+public class File {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +23,14 @@ public class Imgs {
     @NotEmpty
     private Integer postId;
 
+    private String fileName;
+
     private String imgName;
 
     @Builder
-    public Imgs(Integer postId, String imgName) {
+    public File(Integer postId, String imgName, String fileName) {
         this.postId = postId;
         this.imgName = imgName;
+        this.fileName = fileName;
     }
 }

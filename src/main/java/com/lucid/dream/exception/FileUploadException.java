@@ -1,11 +1,15 @@
 package com.lucid.dream.exception;
 
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
 
-public class CustomException extends RuntimeException{
+public class FileUploadException extends RuntimeException {
 
     public FileUploadException(String message) {
-        super(mes);
+        super(message);
     }
+
+    public FileUploadException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
 
 }
