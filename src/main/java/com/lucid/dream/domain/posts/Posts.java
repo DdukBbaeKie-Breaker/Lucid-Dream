@@ -1,9 +1,6 @@
 package com.lucid.dream.domain.posts;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,14 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
+
+@Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
+@AllArgsConstructor
 @Entity
 public class Posts extends BaseTimeEntity{
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Integer id;
 
     @Column(length = 500, nullable = false)
     @NotEmpty

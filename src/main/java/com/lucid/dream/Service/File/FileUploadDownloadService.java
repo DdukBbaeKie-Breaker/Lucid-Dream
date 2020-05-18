@@ -1,4 +1,4 @@
-package com.lucid.dream.Service;
+package com.lucid.dream.Service.File;
 
 import com.lucid.dream.exception.FileDownloadException;
 import com.lucid.dream.exception.FileUploadException;
