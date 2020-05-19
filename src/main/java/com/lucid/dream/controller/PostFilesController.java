@@ -16,7 +16,7 @@ import java.util.List;
 public class PostFilesController {
 
     @Autowired
-    private FileUDControllerServiceImpl fileUDP;
+    private final FileUDControllerServiceImpl fileUDP;
 
     @PostMapping("/uploadFile")
     public FileUploadResponse uploadFile(@RequestParam("file")MultipartFile file) {
@@ -35,4 +35,5 @@ public class PostFilesController {
 
         return fileUDP.downloadFiles(fileName);
     }
+
 }

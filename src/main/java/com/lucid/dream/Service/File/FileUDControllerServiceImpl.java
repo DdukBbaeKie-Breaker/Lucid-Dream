@@ -37,9 +37,8 @@ public class FileUDControllerServiceImpl implements FileUPControllerService{
 
     @Override
     public List<FileUploadResponse> uploadFiles(MultipartFile[] files) {
-        return Arrays.asList(files)
-                .stream()
-                .map(file -> uploadFile(file))
+        return Arrays.stream(files)
+                .map(this::uploadFile)
                 .collect(Collectors.toList());
     }
 
@@ -52,7 +51,7 @@ public class FileUDControllerServiceImpl implements FileUPControllerService{
             contentType = Files.probeContentType(Paths.get(resource.getURI()));
 
         } catch (IOException ex) {
-            System.out.println("a");
+            System.out.println("Could not determine file type.");
         }
 
         if (contentType == null) {

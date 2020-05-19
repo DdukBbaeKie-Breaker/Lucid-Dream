@@ -1,7 +1,6 @@
 package com.lucid.dream.domain.posts;
 
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;

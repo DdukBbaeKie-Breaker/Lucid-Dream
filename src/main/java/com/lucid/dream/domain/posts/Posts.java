@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
