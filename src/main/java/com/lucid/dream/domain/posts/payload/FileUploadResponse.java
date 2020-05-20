@@ -1,10 +1,8 @@
 package com.lucid.dream.domain.posts.payload;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class FileUploadResponse {
 
     private String fileName;
