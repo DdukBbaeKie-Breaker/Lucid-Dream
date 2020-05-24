@@ -1,16 +1,25 @@
 package com.lucid.dream.controller;
 
+import com.lucid.dream.Service.PostsControllerServiceImpl;
+import com.lucid.dream.domain.posts.Posts;
+import com.lucid.dream.domain.posts.payload.PostsResponse;
 import com.lucid.dream.domain.posts.repository.PostsRepository;
 import com.lucid.dream.dto.PostsSaveRequestDto;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 public class WebRestController {
+
+    @Autowired
+    PostsControllerServiceImpl post;
 
     private PostsRepository postsRepository;
 
@@ -23,5 +32,11 @@ public class WebRestController {
     public void savePosts(@RequestBody PostsSaveRequestDto dto ) {
         postsRepository.save(dto.toEntity());
 
+    }
+
+    @PostMapping("/postslist")
+    public List<PostsResponse> postsList() {
+
+        return post.viewPostList();
     }
 }

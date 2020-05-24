@@ -3,13 +3,13 @@ package com.lucid.dream.Service.File;
 import com.lucid.dream.domain.posts.payload.FileUploadResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.ws.rs.core.HttpHeaders;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;

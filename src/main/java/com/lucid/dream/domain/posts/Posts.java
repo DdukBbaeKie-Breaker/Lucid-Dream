@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
 
 @EqualsAndHashCode(callSuper = true)
@@ -21,13 +21,14 @@ public class Posts extends BaseTimeEntity{
     private Integer id;
 
     @Column(length = 500, nullable = false)
-    @NotEmpty
+    @NotBlank
     private String title;
 
     @Column(columnDefinition = "TEXT", nullable = false)
-    @NotEmpty
+    @NotBlank
     private String content;
 
+    @NotBlank
     private String author;
 
     @Builder
