@@ -1,8 +1,8 @@
 package com.lucid.dream.Service;
 
-import com.lucid.dream.domain.posts.Posts;
-import com.lucid.dream.domain.posts.payload.PostsResponse;
-import com.lucid.dream.domain.posts.repository.PostsRepository;
+import com.lucid.dream.domain.Posts;
+import com.lucid.dream.domain.payload.response.PostsResponse;
+import com.lucid.dream.domain.repository.PostsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

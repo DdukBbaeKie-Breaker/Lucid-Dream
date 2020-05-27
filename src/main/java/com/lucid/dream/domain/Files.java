@@ -1,4 +1,4 @@
-package com.lucid.dream.domain.posts;
+package com.lucid.dream.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

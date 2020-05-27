@@ -1,6 +1,6 @@
 package com.lucid.dream.dto;
 
-import com.lucid.dream.domain.posts.Posts;
+import com.lucid.dream.domain.Posts;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

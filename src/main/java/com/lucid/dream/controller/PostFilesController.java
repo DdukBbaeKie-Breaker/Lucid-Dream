@@ -1,7 +1,7 @@
 package com.lucid.dream.controller;
 
 import com.lucid.dream.Service.File.FileUDControllerServiceImpl;
-import com.lucid.dream.domain.posts.payload.FileUploadResponse;
+import com.lucid.dream.domain.payload.response.FileUploadResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;

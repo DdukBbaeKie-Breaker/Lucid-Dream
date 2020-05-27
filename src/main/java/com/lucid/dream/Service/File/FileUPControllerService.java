@@ -1,6 +1,6 @@
 package com.lucid.dream.Service.File;
 
-import com.lucid.dream.domain.posts.payload.FileUploadResponse;
+import com.lucid.dream.domain.payload.response.FileUploadResponse;
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;

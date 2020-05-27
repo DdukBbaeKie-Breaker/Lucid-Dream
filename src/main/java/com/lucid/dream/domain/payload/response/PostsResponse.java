@@ -1,4 +1,4 @@
-package com.lucid.dream.domain.posts.payload;
+package com.lucid.dream.domain.payload.response;
 
 import lombok.Builder;
 import lombok.Data;
