@@ -6,10 +6,7 @@ import com.lucid.dream.domain.repository.PostsRepository;
 import com.lucid.dream.dto.PostsSaveRequestDto;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,25 +14,43 @@ import java.util.List;
 @AllArgsConstructor
 public class WebRestController {
 
-    @Autowired
-    PostsControllerServiceImpl post;
+    private final PostsControllerServiceImpl post;
 
     private PostsRepository postsRepository;
+
+    @Autowired
+    public WebRestController(PostsControllerServiceImpl post) {
+        this.post = post;
+    }
 
     @GetMapping("/dream")
     public String hello() {
 
         return "hello my dream";
     }
+
+    @GetMapping("/hi")
+    public String hi() {
+
+        return "Hello hello my name is Jisu~";
+    }
+
     @PostMapping("/posts")
-    public void savePosts(@RequestBody PostsSaveRequestDto dto ) {
+    public void savePosts(@RequestBody PostsSaveRequestDto dto) {
         postsRepository.save(dto.toEntity());
 
     }
 
-    @PostMapping("/postslist")
-    public List<PostsResponse> postsList() {
 
+    @PostMapping("/list")
+    public List<PostsResponse> postsList() {
         return post.viewPostList();
+
+    }
+
+    @GetMapping("/choice")
+    public String choice(@RequestParam Integer postNumber) throws Exception {
+
+        return post.viewContent(postNumber);
     }
 }

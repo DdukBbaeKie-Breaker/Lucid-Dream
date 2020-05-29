@@ -1,5 +1,7 @@
 package com.lucid.dream.Service.File;
 
+import com.lucid.dream.domain.FilesLocation;
+import com.lucid.dream.domain.repository.FilesRepository;
 import com.lucid.dream.exception.FileDownloadException;
 import com.lucid.dream.exception.FileUploadException;
 import com.lucid.dream.utill.FileUploadProperties;
@@ -20,11 +22,12 @@ import java.util.Objects;
 @Service
 public class FileUploadDownloadService {
 
+    private final FilesRepository filesRepository;
     private final Path fileLocation;
 
 
     @Autowired
-    public FileUploadDownloadService(FileUploadProperties prop) {
+    public FileUploadDownloadService(FileUploadProperties prop, FilesRepository repository) {
         this.fileLocation = Paths.get(prop.getUploadDir()).toAbsolutePath().normalize();
 
         try {
@@ -32,6 +35,7 @@ public class FileUploadDownloadService {
         }catch (Exception e) {
             throw new FileUploadException("파일을 업로드할 디렉토리를 생성하지 못했습니다.", e);
         }
+        this.filesRepository = repository;
     }
 
     public String storeFile(MultipartFile file) {
@@ -44,6 +48,8 @@ public class FileUploadDownloadService {
             Path targetLocation = this.fileLocation.resolve(fileName);
 
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
+
+            location(file);
 
             return fileName;
         }catch (Exception e) {
@@ -65,5 +71,14 @@ public class FileUploadDownloadService {
         }catch (MalformedURLException e) {
             throw new FileDownloadException(fileName + "파일을 찾을 수 없습니다.", e);
         }
+    }
+
+    public FilesLocation location(MultipartFile file) {
+        String fileName = file.getOriginalFilename();
+
+        return filesRepository.save(FilesLocation.builder()
+                .fileLocation(fileLocation+fileName)
+                .build()
+        );
     }
 }

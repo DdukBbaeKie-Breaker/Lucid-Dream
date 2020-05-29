@@ -3,7 +3,6 @@ package com.lucid.dream.Service;
 import com.lucid.dream.domain.Posts;
 import com.lucid.dream.domain.payload.response.PostsResponse;
 import com.lucid.dream.domain.repository.PostsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,8 +11,12 @@ import java.util.List;
 @Service
 public class PostsControllerServiceImpl implements PostsControllerService{
 
-    @Autowired
+    final
     PostsRepository postsRepository;
+
+    public PostsControllerServiceImpl(PostsRepository postsRepository) {
+        this.postsRepository = postsRepository;
+    }
 
     @Override
     public List<PostsResponse> viewPostList() {
@@ -32,5 +35,13 @@ public class PostsControllerServiceImpl implements PostsControllerService{
         }
 
         return list;
+    }
+
+    public String viewContent(Integer id) throws Exception {
+
+        Posts content = postsRepository.findById(id).orElseThrow(Exception::new);
+
+        return content.getContent();
+
     }
 }

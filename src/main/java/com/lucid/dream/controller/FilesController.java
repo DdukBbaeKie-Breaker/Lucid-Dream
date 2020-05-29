@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-public class PostFilesController {
+public class FilesController {
 
     @Autowired
     private final FileUDControllerServiceImpl fileUDP;
