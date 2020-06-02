@@ -29,10 +29,9 @@ public class WebRestController {
         return "hello my dream";
     }
 
-    @GetMapping("/hi")
-    public String hi() {
-
-        return "Hello hello my name is Jisu~";
+    @GetMapping("jisu")
+    public String jisu() {
+        return "안.녕.안.녕.나.는.지.수.야↗\n헬.륨.가.스.먹.었.더.니.요.로.케.됐.지~";
     }
 
     @PostMapping("/posts")
@@ -41,6 +40,7 @@ public class WebRestController {
 
     }
 
+    return 
 
     @PostMapping("/list")
     public List<PostsResponse> postsList() {
@@ -53,4 +53,5 @@ public class WebRestController {
 
         return post.viewContent(postNumber);
     }
+
 }

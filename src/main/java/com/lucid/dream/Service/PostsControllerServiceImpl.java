@@ -41,7 +41,7 @@ public class PostsControllerServiceImpl implements PostsControllerService{
 
         Posts content = postsRepository.findById(id).orElseThrow(Exception::new);
 
-        return content.getContent();
+         return content.getContent();
 
     }
 }

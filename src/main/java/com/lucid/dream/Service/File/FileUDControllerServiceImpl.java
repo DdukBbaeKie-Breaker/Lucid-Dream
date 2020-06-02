@@ -1,7 +1,6 @@
 package com.lucid.dream.Service.File;
 
 import com.lucid.dream.domain.payload.response.FileUploadResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -15,13 +14,17 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 @Service
 public class FileUDControllerServiceImpl implements FileUPControllerService{
 
-    @Autowired
-    private FileUploadDownloadService service;
+    private final FileUploadDownloadService service;
+
+    public FileUDControllerServiceImpl(FileUploadDownloadService service) {
+        this.service = service;
+    }
 
     @Override
     public FileUploadResponse uploadFile(MultipartFile file) {
@@ -63,4 +66,5 @@ public class FileUDControllerServiceImpl implements FileUPControllerService{
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);
     }
+
 }
