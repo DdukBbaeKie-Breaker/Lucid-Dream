@@ -1,10 +1,10 @@
 package com.lucid.dream.controller;
 
 import com.lucid.dream.Service.MessageService;
-import com.lucid.dream.domain.payload.Message;
+import com.lucid.dream.domain.payload.message.Message;
+import com.lucid.dream.domain.payload.response.MessageResponse;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,9 +16,17 @@ public class SocketServerController {
 
     private MessageService messageService;
 
-    @MessageMapping("/test/{number}")
-    @SendTo("/topic/{number}")
-    public Message chat(@DestinationVariable Integer number, Message message) {
-        return messageService.createChat(message);
+
+    @MessageMapping("/chat.sendMessage")
+    @SendTo("topic/public")
+    public Message sendMessage(Message message) {
+        return message;
+    }
+
+    @MessageMapping("/chat.addUser")
+    @SendTo("/topic/public")
+    public MessageResponse addUser(MessageResponse message) {
+        messageService.setMessage(message);
+        return message;
     }
 }

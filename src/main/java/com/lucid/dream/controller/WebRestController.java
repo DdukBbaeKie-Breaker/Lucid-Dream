@@ -40,8 +40,6 @@ public class WebRestController {
 
     }
 
-    return 
-
     @PostMapping("/list")
     public List<PostsResponse> postsList() {
         return post.viewPostList();

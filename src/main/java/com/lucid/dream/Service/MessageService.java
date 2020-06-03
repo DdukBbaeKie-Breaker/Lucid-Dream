@@ -1,16 +1,25 @@
 package com.lucid.dream.Service;
 
-import com.lucid.dream.domain.payload.Message;
+import com.lucid.dream.domain.payload.message.Message;
+import com.lucid.dream.domain.payload.response.MessageResponse;
+import com.lucid.dream.domain.repository.MessagesRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MessageService {
 
-    public Message createChat(Message message) {
+    public final MessagesRepository messagesRepository;
 
-        return Message.builder()
-                .userName(message.getUserName())
-                .message(message.getMessage())
+    public MessageService(MessagesRepository messagesRepository) {
+        this.messagesRepository = messagesRepository;
+    }
+
+    public MessageResponse setMessage(MessageResponse message) {
+
+        return MessageResponse.builder()
+                .content(message.getContent())
+                .sender(message.getSender())
                 .build();
     }
+
 }
