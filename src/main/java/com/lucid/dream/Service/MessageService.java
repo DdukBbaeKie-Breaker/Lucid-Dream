@@ -1,6 +1,5 @@
 package com.lucid.dream.Service;
 
-import com.lucid.dream.domain.payload.message.Message;
 import com.lucid.dream.domain.payload.response.MessageResponse;
 import com.lucid.dream.domain.repository.MessagesRepository;
 import org.springframework.stereotype.Service;

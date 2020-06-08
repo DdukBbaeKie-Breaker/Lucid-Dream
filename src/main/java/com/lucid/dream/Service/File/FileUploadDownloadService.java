@@ -25,8 +25,6 @@ public class FileUploadDownloadService {
     private final FilesRepository filesRepository;
     private final Path fileLocation;
 
-
-    @Autowired
     public FileUploadDownloadService(FileUploadProperties prop, FilesRepository repository) {
         this.fileLocation = Paths.get(prop.getUploadDir()).toAbsolutePath().normalize();
 

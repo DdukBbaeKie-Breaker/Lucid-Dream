@@ -13,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Builder
 @Entity
 public class Posts extends BaseTimeEntity{
 
@@ -31,11 +32,6 @@ public class Posts extends BaseTimeEntity{
     @NotBlank
     private String author;
 
-    @Builder
-    public Posts(String title, String content, String author, String img) {
-        this.title = title;
-        this.content = content;
-        this.author = author;
-    }
+
 
 }
