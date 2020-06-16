@@ -3,20 +3,17 @@ package com.lucid.dream.Service;
 import com.lucid.dream.domain.Posts;
 import com.lucid.dream.domain.payload.response.PostsResponse;
 import com.lucid.dream.domain.repository.PostsRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class PostsControllerServiceImpl implements PostsControllerService{
 
-    final
-    PostsRepository postsRepository;
-
-    public PostsControllerServiceImpl(PostsRepository postsRepository) {
-        this.postsRepository = postsRepository;
-    }
+    private final PostsRepository postsRepository;
 
     @Override
     public List<PostsResponse> viewPostList() {
